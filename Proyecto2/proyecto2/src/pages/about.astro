@@ -1,0 +1,73 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import '@/styles/global.css';
+const pageTitle = "Acerca de mi";
+
+const identity = {
+	firstName: "Wilfredo",
+	country: "Costa Rica",
+	occupation: "Estudiante de Ingeniería en Computación",
+	hobbies: ["Leer", "Andar en bicicleta", "Ver series"],
+};
+
+const skills = [
+	"HTML",
+	"CSS",
+	"JavaScript",
+	"React",
+	"Astro",
+	"Redacción de documentos",
+];
+
+const happy = true;
+const finished = false;
+const goal = 3;
+
+const skinColor = "navy";
+---
+<style define:vars={{skinColor}}>
+	
+	.skill{
+		color: var(--skinColor);
+		font-weight: bold;
+	}
+</style>
+
+<Layout>
+	<div
+		style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: calc(100vh - 100px);"
+	>
+		<h1 style="text-align: center;">{pageTitle}</h1>
+		<div style="max-width: 80%;">
+			<h1 style="text-align: center;">Hola! Soy {identity.firstName}</h1>
+			<p>
+				Soy de {identity.country} y actualmente me encuentro en mi último
+				año de carrera de {identity.occupation} en el Instituto Tecnológico
+				de Costa Rica. Con conocimientos de desarrollo web, bases de datos
+				,patrones de diseño, programación orientada a objetos. Apasionado
+				por la resolución de problemas y el aprendizaje continuo.
+			</p>
+			<h2 style="text-align: center;">Hobbies</h2>
+			<ul>
+				{identity.hobbies.map((hobby) => <li class="skill">{hobby}</li>)}
+			</ul>
+			<p>
+				Este sitio se irá actualizando a medida que vaya completando más
+				partes del tutorial, ¡así que no dejes de visitarlo para ver
+				cómo va mi viaje!
+			</p>
+
+			{happy && <p>¡Estoy feliz de aprender Astro!</p>}
+
+			{finished && <p>¡He terminado este tutorial!</p>}
+
+			{
+				goal === 3 ? (
+					<p>Mi objetivo es terminar en 3 días.</p>
+				) : (
+					<p>Mi objetivo no son 3 días.</p>
+				)
+			}
+		</div>
+	</div>
+</Layout>

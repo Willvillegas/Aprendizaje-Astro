@@ -1,0 +1,36 @@
+---
+const { frontmatter } = Astro.props;
+import Base from "./Base.astro";
+---
+
+<Base pageTitle={frontmatter.title}>
+    <p>Escrito por: {frontmatter.author}</p>
+    <p>Fecha: {frontmatter.pubDate.toString().slice(0,10)}</p>
+    <slot />
+</Base>
+
+
+
+<!-- 
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <title>Document</title>
+    </head>
+    <body>
+        <div>
+            <h1>{frontmatter.title}</h1>
+            <p>Escrito por: {frontmatter.author}</p>
+            <p>Fecha: {frontmatter.pubDate.toString().slice(0,10)}</p>
+            <slot />
+        </div>
+    </body>
+</html>
+
+
+
+
+-->

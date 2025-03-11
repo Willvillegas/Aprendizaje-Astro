@@ -1,0 +1,26 @@
+---
+//import "@/styles/global.css";
+const platfor = "github";
+const usernae = "Willvillegas";
+import Socials from "./socials.astro";
+---
+
+<style>
+    footer {
+        color: #333;
+        display: flex;
+        gap: 1rem;
+        margin: 2rem;
+
+        justify-content: center;
+    }
+</style>
+
+<footer>
+    <p>Este es el footer</p>
+    <p>¡Más información sobre mis proyectos en:</p>
+
+    <Socials platform={platfor} username={usernae} />
+    <Socials platform="facebook" username={usernae} />
+    <p>&copy; 2025</p>
+</footer>

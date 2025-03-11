@@ -1,0 +1,30 @@
+---
+const { url, title, image } = Astro.props;
+---
+<div class="container">
+    <img src={image} alt="title">
+    <a href={url}>{title}</a>
+</div>
+
+<style>
+    .container {
+        /* Card */
+        width: 50%;
+        height: 100%;
+        display: block;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+        margin: 1rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-color: aquamarine !important;
+        background-color: #f0f0f0;
+    }
+    .container img {
+        width: 50%;
+        height: 50%;
+        border-radius: 10px;
+    }
+</style>

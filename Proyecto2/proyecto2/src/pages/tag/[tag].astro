@@ -1,0 +1,51 @@
+---
+import Base from "@/layouts/Base.astro";
+import BlogPost from "@/components/BlogPost.astro";
+interface Posting {
+    frontmatter: {
+        title: string;
+        tags: string[];
+    };
+    url: string;
+}
+
+
+
+export async function getStaticPaths() {
+    const matches = import.meta.glob("@/pages/post/*.md", { eager: true });
+    const allPosts = Object.values(matches) as Posting[];
+    // esto es para obtener todas las etiquetas de los posts de forma dinámica
+    const uniqueTags = [
+        ...new Set(allPosts.map((post: Posting) => post.frontmatter.tags).flat()),
+    ];
+
+    return uniqueTags.map((tag) => {
+        const filteredPosts = allPosts.filter((post: Posting) =>
+            post.frontmatter.tags.includes(tag),
+        );
+        return {
+            params: { tag },
+            props: { posts: filteredPosts },
+        };
+    });
+}
+
+const { tag } = Astro.params;
+const { posts } = Astro.props as any;
+// console.log(posts);
+// const filteredPosts = posts.filter((post: any) =>
+//     post.frontmatter.tags?.includes(tag),
+// );
+---
+
+<Base pageTitle={tag}>
+    <p>Entradas etiquetadas con {tag}</p>
+    <ul>
+        {
+            // filteredPosts.map((post: any) => (
+            posts.map((post: any) => (
+                <BlogPost url={post.url} title={post.frontmatter.title} />
+            ))
+        }
+    </ul>
+</Base>

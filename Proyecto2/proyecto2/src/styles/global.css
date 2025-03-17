@@ -2,6 +2,15 @@
     box-sizing: border-box;
 }
 
+html.dark {
+    background-color: #0d0950;
+    color: #fff;
+}
+
+.dark .nav-links a {
+    color: #fff;
+}
+
 
 html,
 body {
@@ -27,6 +36,7 @@ a:hover {
     margin-bottom: 10px;
     background-color: #ff9776;
 }
+
 /* estilos de la barra de navegación*/
 
 .nav-links {
@@ -77,4 +87,4 @@ a:hover {
 
 .hamburger {
     display: none;
-  }
+}

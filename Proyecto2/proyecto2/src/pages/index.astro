@@ -4,6 +4,7 @@ import Layout from '@/layouts/Layout.astro';
 
 import BaseLayout from '@/layouts/Base.astro';
 const pageTitle = "Página de inixssscio";
+import Saludo from '@/components/saludo.jsx';
 
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
@@ -16,4 +17,5 @@ const pageTitle = "Página de inixssscio";
 
 <BaseLayout pageTitle={pageTitle}>
   <h2>Mi impresionante subtítulo del blog</h2>
+  <Saludo client:load messages={["Hola", "Qué tal", "Hola a todos"]} />
 </BaseLayout>
